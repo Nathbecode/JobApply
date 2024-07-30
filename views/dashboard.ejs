@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head.ejs",{ title: 'AppJob' }) %>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <section class = "container1">
+        <h3>&#x1F4BC; AppJob</h3>
+        <div class="user-profile"><h3 class="fullname"></h3><a href="/profile" class="link-profile">My profile</a></div>
+    </section>
+    <section class="divdashboard">
+        <div class="title job-title"><h2>Dashboard</h2></div>
+        <div><a href="/createjob">Create a new Job</a></div>
+    </section>    
+    <section class="container3">
+        <v class="filters">
+            <label for="filter">Filter by</label>
+                <select name="filter" id="filter">
+                    <option value="status">Status</option>
+                    <option value="date">Date</option>
+                </select>
+                <label for="order">Order</label>
+                <select name="order" id="order">
+                    <option value="interested">Asc.</option>
+                    <option value="cv-sent">Desc.</option>
+                </select><br><br>
+        <div class="jobs">
+            <div class="job">
+                <div class="status">CV Sent</div><br>
+                <div class="titlejob"><h4>titlejob</h4></div><br>
+                <div class="companyname"><p>Company</p></div>
+                <div class="link"><a href="">see more</a></div>
+            </div>
+            <div class="job">
+                <div class="status">CV Sent</div><br>
+                <div class="titlejob"><h4>titlejob</h4></div><br>
+                <div class="companyname"><p>Company</p></div>
+                <div class="link"><a href="">see more</a></div>
+            </div>
+            <div class="job">
+                <div class="status">CV Sent</div><br>
+                <div class="titlejob"><h4>titlejob</h4></div><br>
+                <div class="companyname"><p>Company</p></div>
+                <div class="link"><a href="">see more</a></div>
+            </div>
+            <div class="job">
+                <div class="status">CV Sent</div><br>
+                <div class="titlejob"><h4>titlejob</h4></div><br>
+                <div class="companyname"><p>Company</p></div>
+                <div class="link"><a href="">see more</a></div>
+            </div>            
+        </div>
+    </section>
+    <script src="app.js"></script>
+    <script>
+        
+    </script>
+</body>
+</html>

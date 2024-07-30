@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head.ejs",{ title: 'AppJob' }) %>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <section class = "container1">
+        <h3>&#x1F4BC; AppJob</h3>
+        <div class="user-profile"><h3 class="fullname"></h3><a href="/profile" class="link-profile"></a></div>
+    </section>
+    <div class="title"><h2>My Profile</h2></div>
+    <section class="container2 profile">
+        <div class="photo">
+            <img src="" alt="Profile Photo" class="photo-profile">
+        </div>
+        <div class="divprofile">
+            <div class="fullname"><p>Full name:  </p></div>
+            <div class="email"><p>Email:  </p></div>
+            <div class="link"><p>GitHub:  </p></div>
+            <form action="profile" method="get" class="form-profile">
+                <button 
+                id="download-cv">Download CV</button>
+            </form>
+            <form action="/profile" method="post" class="form-profile">
+                <button 
+                id="upload-cv">Upload new CV</button>
+                <button 
+                id="change password">Change password</button>
+            </form>
+        </div>
+    </section>
+    <script src="app.js"></script>
+    <script>
+        
+    </script>
+</body>
+</html>

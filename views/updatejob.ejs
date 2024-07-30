@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head.ejs",{ title: 'AppJob' }) %>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <section class = "container1">
+        <h3>&#x1F4BC; AppJob</h3>
+        <div class="user-profile"><h3 class="fullname"></h3><a href="/profile" class="link-profile">My Profile</a></div>
+    </section>
+    <section class="divtitle">
+        <div><a href="/dashboard">Back to Dashboard</a></div>
+        <div class="title job-title"><h2></h2></div>
+    </section>
+    <section class="container2">
+        <div class="divjobinfo">
+            <p>Company:</p><div class="company"></div>
+            <p>Website:</p><div class="website"></div><br>
+            <hr><br>
+            <h4>Contact of the employer</h4><br>
+            <p>Name:</p><div class="employersname"></div>
+            <p>Email:</p><div class="emailemployer"></div>
+            <p>Phone:</p><div class="phone"></div>
+            <p>Address:</p><div class="address"></div><br>
+            <hr><br>
+            <h4>Candidature spontanee</h4><br>
+            <p>Status:</p><div class="status"></div>
+            <p>Comments:</p><div class="comments"></div>
+            <form action="/updatejob" method="post">
+                <button 
+                id="updatejob">Update</button>
+            </form>
+        </div>
+    </section>
+    <script src="app.js"></script>
+    <script>
+        
+    </script>
+</body>
+</html>
