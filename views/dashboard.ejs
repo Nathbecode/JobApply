@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head.ejs",{ title: 'AppJob' }) %>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <section class = "container1">
+        <h3>&#x1F4BC; AppJob</h3>
+        <div class="user-profile"><h3 class="fullname"></h3><a href="/profile" class="link-profile">My profile</a><a href="/logout" class="link-profile"> Logout</a></div>
+    </section>
+    <section class="divdashboard">
+        <div class="title job-title"><h2>Dashboard</h2></div>
+        <div><a href="/create-job">Create a new Job</a></div>
+    </section>    
+    <section class="container3">
+        <v class="filters">
+            <label for="filter">Filter by</label>
+                <select name="filter" id="filter" onchange="sortJobs()">
+                    <!-- inverser les deux comme ça c'est par date de base -->
+                    <option value="date">Date</option> 
+                    <option value="status">Status</option>
+                </select>
+                <label for="order">Order</label>
+                <select name="order" id="order" onchange="sortJobs()">
+                    <option value="asc">Asc.</option>
+                    <option value="desc">Desc.</option>
+                </select><br><br>
+        <div class="jobs">
+            <% jobs.forEach((job, i) => { %>
+                <div class="job" id=<%= i%> >
+                    <div class="status"><%= job.status %></div><br>
+                    <div class="titlejob"><h4><%= job.title %></h4></div><br>
+                    <div class="companyname"><p><%= job.employer %></p></div>
+                    <div class="link"><a href="/dashboard/<%= job.jobId %>">see more</a></div>
+                </div>
+            <% }) %>
+            <!-- <div class="job">
+                <div class="status">CV Sent</div><br>
+                <div class="titlejob"><h4>titlejob</h4></div><br>
+                <div class="companyname"><p>Company</p></div>
+                <div class="link"><a href="">see more</a></div>
+            </div>
+            <div class="job">
+                <div class="status">CV Sent</div><br>
+                <div class="titlejob"><h4>titlejob</h4></div><br>
+                <div class="companyname"><p>Company</p></div>
+                <div class="link"><a href="">see more</a></div>
+            </div>
+            <div class="job">
+                <div class="status">CV Sent</div><br>
+                <div class="titlejob"><h4>titlejob</h4></div><br>
+                <div class="companyname"><p>Company</p></div>
+                <div class="link"><a href="">see more</a></div>
+            </div>             -->
+        </div>
+    </section>
+    <!-- <script src="app.js"></script> -->
+    <script>
+        //filter job by date and status
+        function sortJobs() {
+            const jobContainer = document.querySelector(".jobs")
+            const jobs = [...document.querySelectorAll(".job")];
+            const filter = document.querySelector("select[name='filter']").value;
+            const order = document.querySelector("select[name='order']").value;
+            if (filter === "date") {
+                jobs.sort((a, b) => {
+                    if (order === "asc") {
+                        return a.id- b.id;
+                    } else {
+                        return b.id - a.id;
+                    }
+                });
+            } else { // status
+                jobs.sort((a, b) => {
+                    statusA = a.querySelector(".status").textContent;
+                    statusB = b.querySelector(".status").textContent;
+                    if (order === "asc") {
+                        return statusA.localeCompare(statusB);
+                    } else {
+                        return statusB.localeCompare(statusA);
+                    }
+                });
+            }
+            jobs.forEach(job => jobContainer.append(job));
+        }  
+
+
+   
+    </script>
+</body>
+</html>
