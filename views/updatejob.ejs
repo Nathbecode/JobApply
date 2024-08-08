@@ -2,38 +2,42 @@
 <html lang="en">
 <head>
     <%- include("./partials/head.ejs",{ title: 'AppJob' }) %>
-    <link rel="stylesheet" href="./style.css" />
+    <!-- ../ pcq c'est dans la route /dashboard/:id donc c'est un étage en dessous -->
+    <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
+    <!-- rendre les valeurs dynamiques -->
     <section class = "container1">
         <h3>&#x1F4BC; AppJob</h3>
-        <div class="user-profile"><h3 class="fullname"></h3><a href="/profile" class="link-profile">My Profile</a></div>
+        <div class="user-profile"><h3 class="fullname"></h3><a href="/profile" class="link-profile">My Profile</a><a href="/logout" class="link-profile"> Logout</a></div>
     </section>
     <section class="divtitle">
         <div><a href="/dashboard">Back to Dashboard</a></div>
-        <div class="title job-title"><h2></h2></div>
+        <div class="title job-title"><h2> <%= title %> </h2></div>
     </section>
     <section class="container2">
         <div class="divjobinfo">
-            <p>Company:</p><div class="company"></div>
-            <p>Website:</p><div class="website"></div><br>
+            <p>Company:</p><div class="company"> <%= employer %> </div>
+            <p>Website:</p><div class="website"> <%= website %> </div><br>
             <hr><br>
             <h4>Contact of the employer</h4><br>
-            <p>Name:</p><div class="employersname"></div>
-            <p>Email:</p><div class="emailemployer"></div>
-            <p>Phone:</p><div class="phone"></div>
-            <p>Address:</p><div class="address"></div><br>
+            <p>Name:</p><div class="employersname"> <%= employer %> </div>
+            <p>Email:</p><div class="emailemployer"> <%= email %> </div>
+            <p>Phone:</p><div class="phone"> <%= phone %> </div>
+            <p>Address:</p><div class="address"> <%= address %> </div><br>
             <hr><br>
-            <h4>Candidature spontanee</h4><br>
-            <p>Status:</p><div class="status"></div>
-            <p>Comments:</p><div class="comments"></div>
+            <h4> <%= origin %> </h4><br>
+            <p>Status:</p><div class="status"> <%= status %> </div>
+            <p>Comments:</p><div class="comments"> <%= comments %> </div>
             <form action="/updatejob" method="post">
                 <button 
                 id="updatejob">Update</button>
+                <!-- Creer nouveau file inputjob.ejs et remplacer le div par le form
+                et eventuellement mettre un placeholder -->
             </form>
         </div>
     </section>
-    <script src="app.js"></script>
+    <!-- <script src="../app.js"></script> -->
     <script>
         
     </script>
