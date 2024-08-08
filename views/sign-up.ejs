@@ -10,7 +10,8 @@
     </section>
     <div class="title"><h2>Register</h2></div>
     <section class="container2">
-        <form action="/sign-up" method="post">
+        <!-- ! enctype pour upload sur cloudinary -->
+        <form action="/sign-up" method="post" enctype="multipart/form-data">
             <label for="member">Firstname: </label>
             <input 
             type="Firstname" 
@@ -51,7 +52,7 @@
             <p> Already registered? <a href="login">Login</a></p> 
         </form>
     </section>
-    <script src="app.js"></script>
+    <!-- <script src="app.js"></script> -->
     <script>
         
     </script>
