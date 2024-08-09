@@ -7,8 +7,7 @@ This is a full stack project built using the following technologies:
 - **Express**
 - **EJS (Embedded JavaScript)**
 - **API Creation**
-- **Databases**:
-  - MySQL
+- **Database**:
   - MongoDB
 - **Mongoose (for MongoDB)**
 - **Authentication**
