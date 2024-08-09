@@ -17,6 +17,9 @@ This is a full stack project built using the following technologies:
 - **Job Management**: Add a job, update a job, and filter jobs.
 - **Profile Management**: Add and update a CV, add a profile picture.
 
-## Application Links
-- The link to the application here: [Front-End Application Link].
+## Application Link
+- The link to the application here: https://jobapply-projetfull.onrender.com.
+- Email:
+- Password:
+- ENJOY!
 
