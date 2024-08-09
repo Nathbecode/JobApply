@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logoappJob">
+                <img class="imglogo" src="https://res.cloudinary.com/dxfqlb1gs/image/upload/v1723210799/uploads/picture-1723210798172.png" alt="AppJob Logo">
+                <p>AppJob</p>
+            </div>
+        </div>
+        <div class="user-info">
+            <span class="username"><%= user ? (user.firstname + ' ' + user.lastname) : 'User' %></span>
+            <img src="<%= user.picture || '/images/default-profile.png' %>" alt="Profile Picture" class="profile-pic">
+            <a href="/profile" class="profile-link">My Profile </a>
+            <a href="/log-out"> Log-out</a>
+        </div>
+    </header>
+    <main class="maindashboard">
+        <div class="title-section">
+            <h1>Dashboard</h1>
+            <a href="/createjob" class="createjob-link">Create a new job</a>  
+        </div><br>
+
+        <div class="filter-order">
+            <!-- Adding a form to create the filters -->
+            <form method="GET" action="/dashboard/filter">
+                <div class="filter-order">
+                    <label for="status">Filter by:</label>
+                    <select name="status" id="status">
+                        <option value="">All Statuses</option>
+                        <option value="Interested">Interested</option>
+                        <option value="CV-sent">CV-sent</option>
+                        <option value="Negative">Negative</option>
+                        <option value="Interview">Interview</option>
+                    </select>
+                    <label for="order">Order by:</label>
+                    <select name="order" id="order">
+                        <option value="asc">Asc.</option>
+                        <option value="desc">Desc.</option>
+                    </select>
+
+                    <button type="submit">Apply</button>
+                </div>
+            </form>
+        </div><br><br>
+
+        <div class="box-container">
+            <% jobs.forEach(job => { %>
+                <div class="box">
+                    <div class="content">
+                        <p class="status"><%= job.status %></p>
+                        <p><strong><%= job.jobtitle %></strong></p>
+                        <p><%= job.companyname %></p>
+                        <a href="/info/<%= job._id %>" class="info-link">See more</a>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    
+    </main>
+    <footer>
+        <div class="footer-content"><div class="logoappJob">
+            <img class="imglogo" src="https://res.cloudinary.com/dxfqlb1gs/image/upload/v1723210799/uploads/picture-1723210798172.png" alt="AppJob Logo">
+            <p>AppJob - Your Job Tracking App</p>
+        </div>
+            <p>&copy; 2024 AppJob. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+<script>
+    // Function to update the background color of status labels
+    function updateStatusColors() {
+        const statusElements = document.querySelectorAll('.status');
+
+        statusElements.forEach(status => {
+            const statusText = status.textContent.trim();
+
+            switch (statusText) {
+                case 'Interested':
+                    status.style.backgroundColor = 'lightblue';
+                    break;
+                case 'CV-sent':
+                    status.style.backgroundColor = 'aquamarine';
+                    break;
+                case 'Negative':
+                    status.style.backgroundColor = 'coral';
+                    break;
+                case 'Interview':
+                    status.style.backgroundColor = 'chartreuse';
+                    break;
+                default:
+                    status.style.backgroundColor = 'gray'; // Default color if no match
+            }
+        });
+    }
+
+document.addEventListener('DOMContentLoaded', updateStatusColors);
+</script>
+</html>

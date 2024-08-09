@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logoappJob">
+                <img class="imglogo" src="https://res.cloudinary.com/dxfqlb1gs/image/upload/v1723210799/uploads/picture-1723210798172.png" alt="AppJob Logo">
+                <p>AppJob</p>
+            </div>
+        </div>
+    </header>
+    <main class="main-form">
+        <div class="profile-section">
+            <h1>Login</h1>
+            <form id="login" action="/login" method="POST">
+                <div class="group">
+                    <label for="email">Email</label><br>
+                    <input type="email" id="email" name="email">
+                    <p class="alert"> 
+                        <% if(err.includes('email')) { %>
+                        <%= err %>
+                        <% } %>
+                    </p>                    
+
+                </div>
+                <div class="group">
+                    <label for="password">Password</label><br>
+                    <input type="password" id="password" name="password">
+                    <p class="alert"> 
+                        <% if(err.includes('password')) {%>
+                        <%= err %>
+                        <% } %>
+                    </p>
+                </div>
+                <button class="button" type="submit">Login</button>
+                <div class="signup-text">
+                    <br>
+                    Not a member yet? <a href="/register">Sign up</a>
+                </div>
+            </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content"><div class="logoappJob">
+            <img class="imglogo" src="https://res.cloudinary.com/dxfqlb1gs/image/upload/v1723210799/uploads/picture-1723210798172.png" alt="AppJob Logo">
+            <p>AppJob - Your Job Tracking App</p>
+        </div>
+            <p>&copy; 2024 AppJob. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
