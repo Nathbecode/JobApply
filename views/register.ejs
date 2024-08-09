@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logoappJob">
+                <img class="imglogo" src="https://res.cloudinary.com/dxfqlb1gs/image/upload/v1723210799/uploads/picture-1723210798172.png" alt="AppJob Logo">
+                <p>AppJob</p>
+            </div>
+        </header>
+    <main class="main-form">
+        <div class="profile-section">
+            <h1>Register</h1>
+            <form id="register" action="/register" method="POST" enctype="multipart/form-data">
+                <div class="group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" id="firstname" name="firstname" required>
+                </div>
+                <div class="group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" name="lastname" required>
+                </div>
+                <div class="group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="group">
+                    <label for="github">Github</label>
+                    <input type="text" id="github" name="github">
+                </div>
+                <div class="group">
+                    <label for="picture"></label>
+                    <div class="custom-file-upload">
+                        <input type="file" id="picture" name="picture" accept="image/*">
+                        <label for="picture">Choose a profile picture</label>
+                        <span id="picture-name">No file chosen</span>
+                    </div>
+                </div>
+                <div class="group">
+                    <label for="cv"></label>
+                    <div class="custom-file-upload">
+                        <input type="file" id="cv" name="cv" accept="application/pdf,image/*">
+                        <label for="cv">Choose a CV</label>
+                        <span id="cv-name">No file chosen</span>
+                    </div>
+                </div>
+                <div class="group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="group">
+                    <label for="confirm">Repeat Password</label>
+                    <input type="password" id="confirm" name="confirm" required>
+                    <!-- alert added in order to show the user the errors -->
+                    <p id="alert"><%= alert %></p>
+                </div><br>
+
+                <button class="button" type="submit">Register</button>
+                <div class="signup-text">
+                    
+                    Already registered? <a href="/login">Login</a>
+                </div>
+            </form>
+            
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content"><div class="logoappJob">
+            <img class="imglogo" src="https://res.cloudinary.com/dxfqlb1gs/image/upload/v1723210799/uploads/picture-1723210798172.png" alt="AppJob Logo">
+            <p>AppJob - Your Job Tracking App</p>
+        </div>
+            <p>&copy; 2024 AppJob. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+<script>
+    document.getElementById('picture').addEventListener('change', function() {
+    const pictureName = document.getElementById('picture-name');
+    pictureName.textContent = this.files.length > 0 ? this.files[0].name : 'No file chosen';
+    });
+
+    document.getElementById('cv').addEventListener('change', function() {
+    const cvName = document.getElementById('cv-name');
+    cvName.textContent = this.files.length > 0 ? this.files[0].name : 'No file chosen';
+    });
+</script>
+
+</html>

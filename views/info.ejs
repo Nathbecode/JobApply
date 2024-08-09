@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logoappJob">
+                <img class="imglogo" src="https://res.cloudinary.com/dxfqlb1gs/image/upload/v1723210799/uploads/picture-1723210798172.png" alt="AppJob Logo">
+                <p>AppJob</p>
+            </div>
+            <a href="/dashboard" class="dashboard-link">My dashboard</a><br>
+        </div>
+            <div class="user-info">
+            <span class="username"><%= user.firstname + ' ' + user.lastname %></span>
+            <img src="<%= user.picture || '/images/default-profile.png' %>" alt="Profile Picture" class="profile-pic">
+            <a href="/profile" class="profile-link">My Profile</a>
+            <a href="/log-out">Log-out</a>
+        </div>
+    </header>
+    <main class="main-form">
+        <div class="create-section">
+            <h1>Job Details: <%= job.jobtitle %></h1><br>
+            <div class="user-details">
+                <!-- adding form post to can update a job -->
+                <form id="update-job" action="/update-job/<%= job._id %>" method="POST">
+                    <p><strong>Company:</strong> <input type="text" name="companyname" value="<%= job.companyname %>" placeholder="<%= job.companyname %>"></p>
+                    <p><strong>Website:</strong> <input type="text" name="website" value="<%= job.website %>" placeholder="<%= job.website %>"></p>
+                    <hr>
+
+                    <h3><strong>Contact of the employer:</strong></h3><br>
+                    <p><strong>Job Title:</strong> <input type="text" name="jobtitle" value="<%= job.jobtitle %>" placeholder="<%= job.jobtitle %>"></p>
+                    <p><strong>Phone:</strong>  <input type="number" name="phone" value="<%= job.phone %>" placeholder="<%= job.phone %>"></p>
+                    <p><strong>Email:</strong>  <input type="email" name="emailcompany" value="<%= job.emailcompany %>" placeholder="<%= job.emailcompany %>"></p>
+                    <p><strong>Address:</strong>  <input type="text" name="address" value="<%= job.address %>" placeholder="<%= job.address %>"></p>
+                    <hr>
+
+                    <p><strong>Origin:</strong> <%= job.origin %></p>
+                    <select name="origin" id="origin">
+                        <option value="Candidature">Candidature spontanee</option>
+                        <option value="Job offer">Job offer</option>
+                    </select><br>
+                    <p><strong>Status:</strong> <%= job.status %> </p>
+                    <select name="status" id="status">
+                        <option value="Interested">Interested</option>
+                        <option value="CV-sent"> Cv-sent</option>
+                        <option value="Negative">Negative</option>
+                        <option value="Interview">Interview</option>
+                    </select><br>
+                    <p><strong>Comment:</strong>  <input type="text" name="comments" value="<%= job.comments %>" placeholder="<%= job.comments %>"></p><br>
+                    
+                    <button class="button">Update</button>
+                </form>
+                <!-- alert added in order to show the user the errors -->
+                <p id="alert"><%= alert %></p>
+
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="logoappJob">
+                <img class="imglogo" src="https://res.cloudinary.com/dxfqlb1gs/image/upload/v1723210799/uploads/picture-1723210798172.png" alt="AppJob Logo">
+                <p>AppJob - Your Job Tracking App</p>
+            </div>
+            <p>&copy; 2024 AppJob. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

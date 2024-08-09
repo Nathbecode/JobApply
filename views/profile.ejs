@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Tracker</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logoappJob">
+                <img class="imglogo" src="https://res.cloudinary.com/dxfqlb1gs/image/upload/v1723210799/uploads/picture-1723210798172.png" alt="AppJob Logo">
+                <p>AppJob</p>
+            </div>
+            <div><a href="/dashboard">My dashboard</a></div>
+        </div>
+        <div class="user-info">
+            <span class="username"><%= user ? (user.firstname + ' ' + user.lastname) : 'User' %></span>
+            <img src="<%= user.picture || '/images/default-profile.png' %>" alt="Profile Picture" class="profile-pic">
+            <a href="/profile" class="profile-link">My Profile </a>
+            <a href="/log-out"> Log-out</a>
+        </div>
+    </header> 
+    <main class="main-form">
+        <div class="profile-section">
+            <h1>My Profile</h1>
+            <div class="profile-content">
+                <div class="profile-avatar">
+                    <img src="<%= user.picture || '/images/default-profile.png' %>" alt="">
+                </div>
+                <div class="user-details">
+                    <p><strong>Full name:</strong> <%= user ? (user.firstname + ' ' + user.lastname) : 'N/A' %></p>
+                    <p><strong>Email:</strong> <%= user ? user.email : 'N/A' %></p>
+                    <p><strong>Github:</strong> <a href="<%= user && user.github ? user.github : '#' %>"><%= user && user.github ? user.github : 'N/A' %></a></p>
+                    <div class="profile-buttons">
+                        <!-- Adding form to update MongoDB and Cloudinary -->
+                        <form id="profile" action="/profile/upload" method="POST" enctype="multipart/form-data">
+                            <% if (user && user.cv) { %>
+                                <a href="<%= user.cv %>" class="btn red" download>Download CV</a><br>
+                            <% } %>
+                            
+                            <div class="custom-file-upload">
+                                <input type="file" id="cv" name="cv" accept=".pdf" required>
+                                <label for="cv">Choose a CV</label>
+                                <span id="cv-name">No file chosen</span>
+                            </div><br>
+                            
+                            <button type="submit" class="btn">Upload new CV</button>
+                        </form>
+                    </div><br>
+                    <!-- ADDING NEW PASSWORD, MAYBE CREATE A MODAL? -->
+                    <div class="changepassword">
+                        <!-- Change Password Form -->
+                        <form id="change-password-form" action="/change-password" method="POST">
+                            <div>
+                                <label for="current-password">Current Password:</label>
+                                <input type="password" id="current-password" name="currentPassword" required>
+                            </div>
+                            <div>
+                                <label for="new-password">New Password:</label>
+                                <input type="password" id="new-password" name="newPassword" required>
+                            </div>
+                            <div>
+                                <label for="confirm-password">Confirm New Password:</label>
+                                <input type="password" id="confirm-password" name="confirmPassword" required>
+                            </div>
+                            <button type="submit" class="btn">Change Password</button>
+                        </form>
+                    </div>                        
+                    <p id="alert"><%= alert %></p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content"><div class="logoappJob">
+            <img class="imglogo" src="https://res.cloudinary.com/dxfqlb1gs/image/upload/v1723210799/uploads/picture-1723210798172.png" alt="AppJob Logo">
+            <p>AppJob - Your Job Tracking App</p>
+        </div>
+            <p>&copy; 2024 AppJob. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+<script>
+    document.getElementById('cv').addEventListener('change', function() {
+    const cvName = document.getElementById('cv-name');
+    cvName.textContent = this.files.length > 0 ? this.files[0].name : 'No file chosen';
+});
+
+</script>
+</html>
