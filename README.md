@@ -19,7 +19,7 @@ This is a full stack project built using the following technologies:
 
 ## Application Link
 - The link to the application here: https://jobapply-projetfull.onrender.com.
-- Email:
-- Password:
-- ENJOY!
+- Email: global@warming.com
+- Password: 12345678
+- ENJOY :)!
 
