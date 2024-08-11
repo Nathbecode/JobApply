@@ -10,7 +10,7 @@ This is a full stack project built using the following technologies:
 - **Database**:
   - MongoDB
 - **Mongoose (for MongoDB)**
-- **Authentication**
+- **Authentication** : bcrypt and JWT.
 
 ## Features of the Application
 - **User Authentication**: Login, Register, and Logout functionalities.
