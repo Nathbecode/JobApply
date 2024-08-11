@@ -133,7 +133,7 @@ module.exports.create_job = async (req, res) => {
         }
         const userId = req.user.id;
 
-        const user = await User.findById(userId);
+        const user = await User.findById(userId).select('-password');
         if (!user) {
             return res.status(400).render('createjob', { alert: 'User not found' });
         }
@@ -245,32 +245,43 @@ module.exports.updateJob = async(req, res) => {
         const { jobId } = req.params;
         const jobUpdates = req.body; 
 
+        // Find the user by ID
         const user = await User.findById(userId);
 
         if (!user) {
-        return res.status(404).render('info',{ alert: 'User not found' });
+            return res.status(404).render('info', { alert: 'User not found' });
         }
 
-         // Find the specific job in the user's jobs array
+        // Find the specific job in the user's jobs array
         const job = user.jobs.id(jobId);
         if (!job) {
-            return res.status(404).render('info',{ alert: 'Job not found' });
+            return res.status(404).render('info', { alert: 'Job not found' });
         }
 
-         // Update the job with new data from the form
+        // Update the job with new data from the form
         job.set(jobUpdates);
 
-         // Save the updated user document back to the database
+        // Save the updated user document back to the database
         await user.save();
 
-         // Respond with success or redirect back to the profile page
-        res.status(200).render('info', { user, job, alert: 'Job updated successfully'});
+        // Additionally, update the jobs array in the database using updateOne
+        const updateResult = await User.updateOne(
+            { _id: user._id },
+            { $set: { jobs: user.jobs } } // Update only the jobs field
+        );
+
+        // Log the update result (optional)
+        console.log('Update Result:', updateResult);
+
+        // Respond with success or redirect back to the profile page
+        res.status(200).render('info', { user, job, alert: 'Job updated successfully' });
 
     } catch (error) {
         console.error('Error updating job:', error);
         res.status(500).render('dashboard', { alert: 'An error occurred', user: req.user });
     }
-}
+};
+
 
 
 module.exports.filterJobs = async (req, res) => {
@@ -318,3 +329,6 @@ module.exports.filterJobs = async (req, res) => {
         res.status(500).send('Server Error');
     }
 };
+
+
+    

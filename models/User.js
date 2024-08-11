@@ -92,10 +92,16 @@ userSchema.post('save', function(doc, next) {
 
 //fire a function before doc saved to db
 userSchema.pre('save', async function(next) {
-    const salt = await bcrypt.genSalt();
-    this.password = await bcrypt.hash(this.password, salt)
+    if (this.isModified('password')) {
+        try {
+            const salt = await bcrypt.genSalt(10);
+            this.password = await bcrypt.hash(this.password, salt);
+        } catch (err) {
+            return next(err);
+        }
+    }
     next();
-})
+});
 
 //static method to login user
 userSchema.statics.login = async function(email, password) {
