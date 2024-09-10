@@ -33,3 +33,8 @@
 - Password: 12345678
 - ENJOY :)!
 
+![Screenshot](https://github.com/Nathbecode/JobApply/blob/main/public/css/JOB1.PNG)
+![Screenshot](https://github.com/Nathbecode/JobApply/blob/main/public/css/JOB.PNG)
+![Screenshot](https://github.com/Nathbecode/JobApply/blob/main/public/css/JOB2.PNG)
+
+
