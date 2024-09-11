@@ -24,7 +24,7 @@
   - MongoDB
 - **Mongoose (for MongoDB)**
 - **Authentication** : bcrypt and JWT. Local Storage, Utilized to persist user data without the need for a backend.
-- - **JavaScript:** Provides interactive elements, such as updating, deleting, and searching job applications.
+- **JavaScript:** Provides interactive elements, such as updating, deleting, and searching job applications.
 
 
 
