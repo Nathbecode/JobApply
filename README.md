@@ -1,6 +1,6 @@
 # Full Stack Project Overview
 
-**JobApply** is a web-based application designed to help job seekers manage and track their job applications efficiently. It provides an organized platform where users can log details about jobs they have applied for, view their application status, and keep track of important deadlines. This tool is ideal for anyone who is actively applying for jobs and wants a simple, intuitive way to manage multiple applications.
+**JobApply** is a web-based application designed to help job seekers manage and track their job applications efficiently. It provides an organized platform where users can log details about jobs they have applied for and view their application status. This tool is ideal for anyone who is actively applying for jobs and wants a simple, intuitive way to manage multiple applications.
 
 
 ## Features of the Application
